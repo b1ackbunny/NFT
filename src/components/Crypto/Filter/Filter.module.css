@@ -1,0 +1,29 @@
+.div {
+    width: 380px;
+    color: white;
+    font-size: 20px;
+}
+
+.ol {
+    width: 380px;
+}
+
+.li {
+
+    width: 330px;
+    border-bottom: 1px solid rgb(105, 105, 103);
+    padding: 10px 0px;
+}
+
+.span_name{
+    color: rgb(153, 154, 155);
+    font-size: 20px;
+    font-weight: 400;
+    padding: 0px 40px 0px 0px;
+    
+}
+
+.span_price {
+    font-size: 20px;
+    font-weight:600;
+}
