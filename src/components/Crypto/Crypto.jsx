@@ -20,7 +20,7 @@ export function Crypto({data}) {
         {data.filter(data => data.symbol.toUpperCase().includes(query)).map(({id, symbol, usd_price}) => (
                       <li className={s.li} key={id}>
                       <span className={s.span_name}>{symbol}</span>
-                      <span className={s.span_price}>${usd_price}</span>
+                      <span className={s.span_price}>${usd_price.toFixed(2)}</span>
                     </li>
           ))}
         </ol>
