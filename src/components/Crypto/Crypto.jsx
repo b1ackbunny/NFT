@@ -1,41 +1,30 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import Logo from './Logo/Logo';
-import Filter from './Filter/Filter';
-import data from './data.json';
-import s from './Crypto.module.css'
+import s from './Crypto.module.css';
 
-class Crypto extends Component {
-  constructor(props) {
-    super(props);
+export function Crypto({data}) {
+  const [query, setQuery] = useState('')
 
-    this.state = {
-      inputValue: '',
-    };
+  return (
+    <div className={s.div}>
+      <Logo title={'BINANCE NFT'} />
 
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange = e => {
-    const { value } = e.currentTarget;
-    this.setState({ inputValue: value });
-  };
-
-  render() {
-    const { inputValue } = this.state;
-    return (
+      <input
+        className={s.input}
+        type="text"
+        placeholder="Search..."
+        onChange={e => setQuery(e.currentTarget.value)}
+      />
       <div className={s.div}>
-        <Logo title={'BINANCE NFT'} />
-        <input
-          className={s.input}
-          type="text"
-          placeholder="Search..."
-          value={inputValue}
-          onChange={this.handleChange}
-        />
-        <Filter data={data.data} value={inputValue} />
+        <ol className={s.ol}>
+        {data.filter(data => data.symbol.toUpperCase().includes(query)).map(({id, symbol, usd_price}) => (
+                      <li className={s.li} key={id}>
+                      <span className={s.span_name}>{symbol}</span>
+                      <span className={s.span_price}>${usd_price}</span>
+                    </li>
+          ))}
+        </ol>
       </div>
-    );
-  }
+    </div>
+  );
 }
-
-export default Crypto;
