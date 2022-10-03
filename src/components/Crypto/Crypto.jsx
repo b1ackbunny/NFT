@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types'
 import Logo from './Logo/Logo';
 import s from './Crypto.module.css';
 
@@ -27,4 +28,14 @@ export function Crypto({data}) {
       </div>
     </div>
   );
+}
+
+Crypto.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      symbol: PropTypes.string.isRequired,
+      usd_price: PropTypes.number.isRequired
+    })
+  )
 }
